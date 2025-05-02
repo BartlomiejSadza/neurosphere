@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --primary: #2563eb; /* niebieski akcent */
+  --primary-hover: #1d4ed8;
+  --accent: #8b5cf6; /* fioletowy akcent */
+  --secondary: #475569; /* slate-600 */
+  --background: #000319; /* ciemne tło, slate-900 */
+  --foreground: #f1f5f9; /* jasny tekst, slate-100 */
+}
