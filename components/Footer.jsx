@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -108,7 +107,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm text-gray-400">
-        © 2023 NeuroSphere. All rights reserved.
+        © 2025 NeuroSphere. All rights reserved.
       </p>
     </footer>
   );

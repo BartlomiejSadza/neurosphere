@@ -1,26 +1,26 @@
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import globals from "globals";
+import pluginReact from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
-
-const eslintConfig = [
-  js.configs.recommended,
-  ...compat.extends("next/core-web-vitals"),
+export default defineConfig([
   {
-    rules: {
-      "react/button-has-type": "off",
-      "react/no-unknown-property": "off",
-    },
-    ignores: ["node_modules", ".next", "out", "public"],
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    plugins: { js },
+    extends: ["js/recommended"],
   },
-];
-
-export default eslintConfig;
+  {
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    languageOptions: { globals: globals.browser },
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    plugins: { react: pluginReact },
+    settings: {
+      react: {
+        version: "19.0.0",
+      },
+    },
+  },
+  pluginReact.configs.flat.recommended,
+]);
