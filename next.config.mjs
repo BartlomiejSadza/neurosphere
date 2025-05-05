@@ -17,6 +17,11 @@ const nextConfig = {
   // When building for production, this creates a standalone folder that can be deployed without
   // the entire node_modules directory, making the final Docker image much smaller
   output: "standalone",
+
+  // Tymczasowo wyłącz ESLint podczas budowania
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

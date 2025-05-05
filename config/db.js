@@ -1,10 +1,11 @@
-import mongoose, { global } from "mongoose";
-import { process } from "dotenv";
+import mongoose from "mongoose";
+import "dotenv/config";
 
-let cached = global.mongoose;
+const globalObject = typeof global !== "undefined" ? global : {};
+let cached = globalObject.mongoose;
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+  cached = globalObject.mongoose = { conn: null, promise: null };
 }
 
 const clientOptions = {
