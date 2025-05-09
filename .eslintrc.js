@@ -1,5 +1,23 @@
 module.exports = {
-  extends: ['next/core-web-vitals', 'eslint:recommended'],
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  extends: [
+    'next/core-web-vitals',
+    'eslint:recommended',
+    'plugin:react/recommended',
+  ],
   rules: {
     'no-unused-vars': [
       'warn',

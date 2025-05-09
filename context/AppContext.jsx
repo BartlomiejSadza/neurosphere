@@ -1,5 +1,4 @@
 'use client';
-import { productsDummyData } from '@/assets/assets';
 import { useRouter } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useUser, useAuth } from '@clerk/nextjs';
@@ -67,6 +66,25 @@ export const AppContextProvider = (props) => {
       cartData[itemId] = 1;
     }
     setCartItems(cartData);
+    if (user) {
+      const token = await getToken();
+      const { data } = await axios.post(
+        '/api/cart/update',
+        {
+          cartData,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (data.success) {
+        toast.success('Item added to cart');
+      } else {
+        toast.error(data.message);
+      }
+    }
   };
 
   const updateCartQuantity = async (itemId, quantity) => {
@@ -77,6 +95,19 @@ export const AppContextProvider = (props) => {
       cartData[itemId] = quantity;
     }
     setCartItems(cartData);
+    if (user) {
+      const token = await getToken();
+      const { data } = await axios.post(
+        '/api/cart/update',
+        { cartData },
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+      if (data.success) {
+        toast.success('Cart updated successfully');
+      } else {
+        toast.error(data.message);
+      }
+    }
   };
 
   const getCartCount = () => {
@@ -108,6 +139,7 @@ export const AppContextProvider = (props) => {
     if (user) {
       fetchUserData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const value = {
