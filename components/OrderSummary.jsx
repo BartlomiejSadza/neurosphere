@@ -1,6 +1,6 @@
-import { addressDummyData } from "@/assets/assets";
-import { useAppContext } from "@/context/AppContext";
-import React, { useEffect, useState } from "react";
+import { addressDummyData } from '@/assets/assets';
+import { useAppContext } from '@/context/AppContext';
+import React, { useEffect, useState } from 'react';
 
 const OrderSummary = () => {
   const { currency, router, getCartCount, getCartAmount } = useAppContext();
@@ -43,10 +43,10 @@ const OrderSummary = () => {
               <span>
                 {selectedAddress
                   ? `${selectedAddress.fullName}, ${selectedAddress.area}, ${selectedAddress.city}, ${selectedAddress.state}`
-                  : "Select delivery address"}
+                  : 'Select delivery address'}
               </span>
               <svg
-                className={`w-5 h-5 inline float-right transition-transform duration-200 ${isDropdownOpen ? "rotate-0" : "-rotate-90"}`}
+                className={`w-5 h-5 inline float-right transition-transform duration-200 ${isDropdownOpen ? 'rotate-0' : '-rotate-90'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -69,12 +69,12 @@ const OrderSummary = () => {
                     className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-gray-300"
                     onClick={() => handleAddressSelect(address)}
                   >
-                    {address.fullName}, {address.area}, {address.city},{" "}
+                    {address.fullName}, {address.area}, {address.city},{' '}
                     {address.state}
                   </li>
                 ))}
                 <li
-                  onClick={() => router.push("/add-address")}
+                  onClick={() => router.push('/add-address')}
                   className="px-4 py-2 hover:bg-blue-900/30 cursor-pointer text-center text-blue-400"
                 >
                   + Add New Address
@@ -123,7 +123,7 @@ const OrderSummary = () => {
               {(
                 getCartAmount() +
                 Math.floor(getCartAmount() * 0.02 * 100) / 100
-              ).toFixed(2)}{" "}
+              ).toFixed(2)}{' '}
               SOL
             </p>
           </div>

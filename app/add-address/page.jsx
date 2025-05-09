@@ -1,18 +1,18 @@
-"use client";
-import { assets } from "@/assets/assets";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Image from "next/image";
-import { useState } from "react";
+'use client';
+import { assets } from '@/assets/assets';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Image from 'next/image';
+import { useState } from 'react';
 
 const AddAddress = () => {
   const [address, setAddress] = useState({
-    fullName: "",
-    phoneNumber: "",
-    pincode: "",
-    area: "",
-    city: "",
-    state: "",
+    fullName: '',
+    phoneNumber: '',
+    pincode: '',
+    area: '',
+    city: '',
+    state: '',
   });
 
   const onSubmitHandler = async (e) => {
@@ -25,7 +25,7 @@ const AddAddress = () => {
       <div className="px-6 md:px-16 lg:px-32 py-16 flex flex-col md:flex-row justify-between">
         <form onSubmit={onSubmitHandler} className="w-full">
           <p className="text-2xl md:text-3xl text-gray-500">
-            Add Shipping{" "}
+            Add Shipping{' '}
             <span className="font-semibold text-orange-600">Address</span>
           </p>
           <div className="space-y-3 max-w-sm mt-10">

@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { useAppContext } from "@/context/AppContext";
-import { useClerk, UserButton } from "@clerk/nextjs";
-import { CartIcon, BagIcon, HomeIcon, BoxIcon } from "@/assets/assets";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { useAppContext } from '@/context/AppContext';
+import { useClerk, UserButton } from '@clerk/nextjs';
+import { CartIcon, BagIcon, HomeIcon, BoxIcon } from '@/assets/assets';
 
 const Navbar = () => {
   const { isSeller, router, user } = useAppContext();
@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-32 py-5 text-white">
       <div
         className="font-bold text-2xl tracking-wider cursor-pointer"
-        onClick={() => router.push("/")}
+        onClick={() => router.push('/')}
       >
         Ailegro
       </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
 
         {isSeller && (
           <button
-            onClick={() => router.push("/seller")}
+            onClick={() => router.push('/seller')}
             className="text-xs border border-white/30 hover:border-white px-6 py-2 rounded-full hover:bg-white/10 transition"
           >
             Seller mode
@@ -71,14 +71,14 @@ const Navbar = () => {
                 <UserButton.Action
                   label="Cart"
                   labelIcon={<CartIcon />}
-                  onClick={() => router.push("/cart")}
+                  onClick={() => router.push('/cart')}
                 />
               </UserButton.MenuItems>
               <UserButton.MenuItems>
                 <UserButton.Action
                   label="My orders"
                   labelIcon={<BagIcon />}
-                  onClick={() => router.push("/my-orders")}
+                  onClick={() => router.push('/my-orders')}
                 />
               </UserButton.MenuItems>
             </UserButton>
@@ -111,7 +111,7 @@ const Navbar = () => {
       <div className="flex items-center md:hidden gap-3">
         {isSeller && (
           <button
-            onClick={() => router.push("/seller")}
+            onClick={() => router.push('/seller')}
             className="text-xs border border-white/30 px-4 py-1.5 rounded-full"
           >
             Seller mode
@@ -124,28 +124,28 @@ const Navbar = () => {
                 <UserButton.Action
                   label="Home"
                   labelIcon={<HomeIcon />}
-                  onClick={() => router.push("/")}
+                  onClick={() => router.push('/')}
                 />
               </UserButton.MenuItems>
               <UserButton.MenuItems>
                 <UserButton.Action
                   label="Products"
                   labelIcon={<BoxIcon />}
-                  onClick={() => router.push("/all-products")}
+                  onClick={() => router.push('/all-products')}
                 />
               </UserButton.MenuItems>
               <UserButton.MenuItems>
                 <UserButton.Action
                   label="Cart"
                   labelIcon={<CartIcon />}
-                  onClick={() => router.push("/cart")}
+                  onClick={() => router.push('/cart')}
                 />
               </UserButton.MenuItems>
               <UserButton.MenuItems>
                 <UserButton.Action
                   label="My orders"
                   labelIcon={<BagIcon />}
-                  onClick={() => router.push("/my-orders")}
+                  onClick={() => router.push('/my-orders')}
                 />
               </UserButton.MenuItems>
             </UserButton>

@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import "dotenv/config";
+import mongoose from 'mongoose';
+import 'dotenv/config';
 
-const globalObject = typeof global !== "undefined" ? global : {};
+const globalObject = typeof global !== 'undefined' ? global : {};
 let cached = globalObject.mongoose;
 
 if (!cached) {
@@ -9,7 +9,7 @@ if (!cached) {
 }
 
 const clientOptions = {
-  serverApi: { version: "1", strict: true, deprecationErrors: true },
+  serverApi: { version: '1', strict: true, deprecationErrors: true },
 };
 
 async function connectDB() {

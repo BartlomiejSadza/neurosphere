@@ -1,13 +1,13 @@
-import { Inngest } from "inngest";
-import User from "../models/User";
-import connectDB from "./db";
+import { Inngest } from 'inngest';
+import User from '../models/User';
+import connectDB from './db';
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "neurosphere" });
+export const inngest = new Inngest({ id: 'neurosphere' });
 
 // Inngest function to save user data to database
 export const syncUserCreation = inngest.createFunction(
-  { id: "create-user-from-clerk" },
-  { event: "clerk/user.created" },
+  { id: 'create-user-from-clerk' },
+  { event: 'clerk/user.created' },
   async ({ event }) => {
     const { id, first_name, last_name, email_addresses, image_url } =
       event.data;
@@ -19,13 +19,13 @@ export const syncUserCreation = inngest.createFunction(
     };
     await connectDB();
     await User.create(userData);
-  },
+  }
 );
 
 // Inngest function to update user data in database
 export const syncUserUpdate = inngest.createFunction(
-  { id: "update-user-from-clerk" },
-  { event: "clerk/user.updated" },
+  { id: 'update-user-from-clerk' },
+  { event: 'clerk/user.updated' },
   async ({ event }) => {
     const { id, email_addresses, first_name, last_name, image_url } =
       event.data;
@@ -38,18 +38,18 @@ export const syncUserUpdate = inngest.createFunction(
           name: `${first_name} ${last_name}`,
           imageUrl: image_url,
         },
-      },
+      }
     );
-  },
+  }
 );
 
 // Inngest function to delete user data from database
 export const syncUserDeletion = inngest.createFunction(
-  { id: "delete-user-from-clerk" },
-  { event: "clerk/user.deleted" },
+  { id: 'delete-user-from-clerk' },
+  { event: 'clerk/user.deleted' },
   async ({ event }) => {
     const { id } = event.data;
     await connectDB();
     await User.findByIdAndDelete(id);
-  },
+  }
 );

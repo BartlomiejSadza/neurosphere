@@ -1,11 +1,11 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { assets, orderDummyData } from "@/assets/assets";
-import Image from "next/image";
-import { useAppContext } from "@/context/AppContext";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import Loading from "@/components/Loading";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { assets, orderDummyData } from '@/assets/assets';
+import Image from 'next/image';
+import { useAppContext } from '@/context/AppContext';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import Loading from '@/components/Loading';
 
 const MyOrders = () => {
   const { currency } = useAppContext();
@@ -47,9 +47,9 @@ const MyOrders = () => {
                       <span className="font-medium text-base">
                         {order.items
                           .map(
-                            (item) => item.product.name + ` x ${item.quantity}`,
+                            (item) => item.product.name + ` x ${item.quantity}`
                           )
-                          .join(", ")}
+                          .join(', ')}
                       </span>
                       <span>Items : {order.items.length}</span>
                     </p>
