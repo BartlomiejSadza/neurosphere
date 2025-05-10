@@ -24,6 +24,8 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     'react/no-unescaped-entities': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
     '@next/next/no-html-link-for-pages': 'warn',
     'react-hooks/exhaustive-deps': 'warn',
   },

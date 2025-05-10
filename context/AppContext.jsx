@@ -29,10 +29,10 @@ export const AppContextProvider = (props) => {
       if (data.success) {
         setProducts(data.products);
       } else {
-        toast.error(data.message);
+        toast.error('Error fetching product data', data.message);
       }
     } catch (error) {
-      console.error(error);
+      toast.error('Error fetching product data');
     }
   };
 
@@ -51,7 +51,7 @@ export const AppContextProvider = (props) => {
         setUserData(data.user);
         setCartItems(data.user.cartItems);
       } else {
-        toast.error(data.message);
+        toast.error('Error fetching user data', data.message);
       }
     } catch (error) {
       toast.error('Error fetching user data');
@@ -77,7 +77,7 @@ export const AppContextProvider = (props) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       );
       if (data.success) {
         toast.success('Item added to cart');
@@ -100,7 +100,7 @@ export const AppContextProvider = (props) => {
       const { data } = await axios.post(
         '/api/cart/update',
         { cartData },
-        { headers: { Authorization: `Bearer ${token}` } },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       if (data.success) {
         toast.success('Cart updated successfully');
@@ -125,7 +125,7 @@ export const AppContextProvider = (props) => {
     for (const items in cartItems) {
       let itemInfo = products.find((product) => product._id === items);
       if (cartItems[items] > 0) {
-        totalAmount += itemInfo.offerPrice * cartItems[items];
+        totalAmount += itemInfo?.offerPrice * cartItems[items];
       }
     }
     return Math.floor(totalAmount * 100) / 100;

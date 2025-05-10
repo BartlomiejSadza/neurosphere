@@ -1,16 +1,44 @@
 import { addressDummyData } from '@/assets/assets';
 import { useAppContext } from '@/context/AppContext';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const OrderSummary = () => {
-  const { currency, router, getCartCount, getCartAmount } = useAppContext();
+  const {
+    currency,
+    router,
+    getCartCount,
+    getCartAmount,
+    getToken,
+    user,
+    cartItems,
+    setCartItems,
+  } = useAppContext();
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const [userAddresses, setUserAddresses] = useState([]);
 
   const fetchUserAddresses = async () => {
-    setUserAddresses(addressDummyData);
+    try {
+      const token = await getToken();
+      const { data } = await axios.get('/api/user/get-address', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (data.success) {
+        setUserAddresses(data.addresses);
+        if (data.addresses.length > 0) {
+          setSelectedAddress(data.addresses[0]);
+        }
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const handleAddressSelect = (address) => {
@@ -21,8 +49,11 @@ const OrderSummary = () => {
   const createOrder = async () => {};
 
   useEffect(() => {
-    fetchUserAddresses();
-  }, []);
+    if (user) {
+      fetchUserAddresses();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div className="w-full md:w-96 bg-gray-900/40 p-6 rounded-xl border border-blue-500/20 backdrop-blur-sm">
@@ -35,9 +66,9 @@ const OrderSummary = () => {
           <label className="text-base font-medium uppercase text-gray-300 block mb-2">
             Select Address
           </label>
-          <div className="relative inline-block w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+          <div className="relative inline-block w-full text-sm rounded-lg overflow-hidden">
             <button
-              className="peer w-full text-left px-4 pr-2 py-3 bg-gray-800 text-gray-300 focus:outline-none"
+              className="rounded-lg w-full text-left px-4 pr-2 py-3 bg-gray-800 text-gray-300 focus:outline-none"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <span>
@@ -62,11 +93,11 @@ const OrderSummary = () => {
             </button>
 
             {isDropdownOpen && (
-              <ul className="absolute w-full bg-gray-800 border border-gray-700 shadow-xl mt-1 z-10 py-1.5 rounded-lg">
+              <ul className="w-full bg-gray-800 border border-gray-700 shadow-xl mt-1 z-10 py-1.5 rounded-lg divide-y divide-gray-700">
                 {userAddresses.map((address, index) => (
                   <li
                     key={index}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-gray-300"
+                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-gray-300 "
                     onClick={() => handleAddressSelect(address)}
                   >
                     {address.fullName}, {address.area}, {address.city},{' '}

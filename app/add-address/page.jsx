@@ -4,8 +4,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { useState } from 'react';
-
+import { useAppContext } from '@/context/AppContext';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 const AddAddress = () => {
+  const { getToken, router } = useAppContext();
+
   const [address, setAddress] = useState({
     fullName: '',
     phoneNumber: '',
@@ -17,6 +21,28 @@ const AddAddress = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const token = await getToken();
+
+      const { data } = await axios.post(
+        '/api/user/add-address',
+        {
+          address,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (data.success) {
+        router.push('/cart');
+        toast.success(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -88,6 +114,7 @@ const AddAddress = () => {
           <button
             type="submit"
             className="max-w-sm w-full mt-6 bg-orange-600 text-white py-3 hover:bg-orange-700 uppercase"
+            onClick={onSubmitHandler}
           >
             Save address
           </button>

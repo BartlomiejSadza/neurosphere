@@ -106,9 +106,10 @@ const Cart = () => {
                               className="bg-gray-800 hover:bg-gray-700 p-1 rounded"
                             >
                               <Image
+                                width={10}
+                                height={10}
                                 src={assets.decrease_arrow}
                                 alt="decrease"
-                                className="w-4 h-4"
                               />
                             </button>
                             <input
@@ -128,9 +129,10 @@ const Cart = () => {
                               className="bg-gray-800 hover:bg-gray-700 p-1 rounded"
                             >
                               <Image
+                                width={10}
+                                height={10}
                                 src={assets.increase_arrow}
                                 alt="increase"
-                                className="w-4 h-4"
                               />
                             </button>
                           </div>
