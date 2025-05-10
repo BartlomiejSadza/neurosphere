@@ -41,6 +41,15 @@ const Navbar = () => {
             Seller mode
           </button>
         )}
+
+        {user && !isSeller && (
+          <button
+            onClick={() => router.push('/become-seller')}
+            className="text-xs border border-white/30 hover:border-white px-6 py-2 rounded-full hover:bg-white/10 transition"
+          >
+            Zostań sprzedawcą
+          </button>
+        )}
       </div>
 
       <div className="hidden md:flex items-center gap-4">
@@ -81,6 +90,14 @@ const Navbar = () => {
                   onClick={() => router.push('/my-orders')}
                 />
               </UserButton.MenuItems>
+              {!isSeller && (
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="Zostań sprzedawcą"
+                    onClick={() => router.push('/become-seller')}
+                  />
+                </UserButton.MenuItems>
+              )}
             </UserButton>
           </>
         ) : (
@@ -148,6 +165,14 @@ const Navbar = () => {
                   onClick={() => router.push('/my-orders')}
                 />
               </UserButton.MenuItems>
+              {!isSeller && (
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="Zostań sprzedawcą"
+                    onClick={() => router.push('/become-seller')}
+                  />
+                </UserButton.MenuItems>
+              )}
             </UserButton>
           </>
         ) : (
