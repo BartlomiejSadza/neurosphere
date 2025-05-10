@@ -22,6 +22,7 @@ const Product = () => {
 
   useEffect(() => {
     fetchProductData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, products.length]);
 
   return productData ? (
