@@ -17,10 +17,11 @@ export async function POST(req) {
     }
 
     // calculate amount using items
-    const amount = items.reduce(async (acc, item) => {
+    let amount = 0;
+    for (const item of items) {
       const product = await Product.findById(item.product);
-      return acc + product.price * item.quantity;
-    }, 0);
+      amount += product.price * item.quantity;
+    }
 
     await inngest.send({
       name: 'order/created',
