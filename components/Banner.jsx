@@ -17,9 +17,7 @@ const Banner = () => {
             for businesses and individual users.
           </p>
         </div>
-        <Button className="group flex items-center justify-center flex-nowrap gap-1 px-12 py-2.5 bg-primary rounded text-white">
-          Learn More
-        </Button>
+        <Button>Learn More</Button>
       </div>
       <div className="h-full md:min-h-[400px] rounded-xl flex items-center justify-center p-8">
         <div className="grid grid-cols-1 gap-10 text-white">

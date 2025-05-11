@@ -19,12 +19,7 @@ const NewsLetter = () => {
             className="w-full md:flex-grow h-11 md:h-12 bg-white/5 focus:bg-white/10 border border-white/10 focus:border-primary rounded-lg md:rounded-r-none px-4 outline-none text-white"
             placeholder="Your email address"
           />
-          <Button
-            type="button"
-            className="md:px-12 px-8 py-3 text-white bg-primary rounded-md md:rounded-l-none"
-          >
-            Subscribe
-          </Button>
+          <Button>Subscribe</Button>
         </div>
         <p className="text-xs text-gray-400 mt-4">
           We respect your privacy. Your data will never be sold or shared with

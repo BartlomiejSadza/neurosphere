@@ -1,6 +1,6 @@
 'use client';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-
+import { Button } from '@/components/ui/button';
 export function GlowingEffectDemo() {
   const categories = [
     {
@@ -9,7 +9,6 @@ export function GlowingEffectDemo() {
       desc: 'Fine-tuned language models',
       count: 156,
       icon: '🧠',
-      color: 'bg-blue-500',
     },
     {
       id: 2,
@@ -17,15 +16,13 @@ export function GlowingEffectDemo() {
       desc: 'Advanced AI instructions',
       count: 423,
       icon: '📝',
-      color: 'bg-purple-500',
     },
     {
       id: 3,
       name: 'Chatbots',
       desc: 'Configurable AI assistants',
-      count: 82,
+      count: 117,
       icon: '💬',
-      color: 'bg-green-500',
     },
     {
       id: 4,
@@ -33,7 +30,6 @@ export function GlowingEffectDemo() {
       desc: 'Models for working with data',
       count: 64,
       icon: '📊',
-      color: 'bg-amber-500',
     },
     {
       id: 5,
@@ -41,7 +37,6 @@ export function GlowingEffectDemo() {
       desc: 'Models for generating images',
       count: 32,
       icon: '🎨',
-      color: 'bg-red-500',
     },
   ];
 
@@ -53,7 +48,6 @@ export function GlowingEffectDemo() {
         title={categories[0].name}
         description={categories[0].desc}
         count={categories[0].count}
-        color={categories[0].color}
       />
       <GridItem
         area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
@@ -61,7 +55,6 @@ export function GlowingEffectDemo() {
         title={categories[1].name}
         description={categories[1].desc}
         count={categories[1].count}
-        color={categories[1].color}
       />
       <GridItem
         area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
@@ -69,7 +62,6 @@ export function GlowingEffectDemo() {
         title={categories[2].name}
         description={categories[2].desc}
         count={categories[2].count}
-        color={categories[2].color}
       />
       <GridItem
         area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
@@ -77,7 +69,6 @@ export function GlowingEffectDemo() {
         title={categories[3].name}
         description={categories[3].desc}
         count={categories[3].count}
-        color={categories[3].color}
       />
       <GridItem
         area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
@@ -85,13 +76,12 @@ export function GlowingEffectDemo() {
         title={categories[4].name}
         description={categories[4].desc}
         count={categories[4].count}
-        color={categories[4].color}
       />
     </ul>
   );
 }
 
-const GridItem = ({ area, icon, title, description, count, color }) => {
+const GridItem = ({ area, icon, title, description, count }) => {
   return (
     <li className={`min-h-[14rem] list-none ${area}`}>
       <div className="relative h-full rounded-2xl border border-neutral-800 bg-black p-2 md:rounded-3xl md:p-3">
@@ -101,28 +91,26 @@ const GridItem = ({ area, icon, title, description, count, color }) => {
           disabled={false}
           proximity={64}
           inactiveZone={0.01}
-          borderWidth={5}
+          borderWidth={4}
         />
-        <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
-          <div
-            className={`w-full ${color} rounded-xl p-3 flex justify-between items-center`}
-          >
-            <h3 className="text-xl font-bold text-white">{title}</h3>
-            {icon}
+        <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl p-6 md:p-6">
+          <div>
+            <h3 className="text-4xl font-bold text-center text-violet-300 mt-6">
+              {title}
+            </h3>
+            <p className="text-sm text-neutral-400 text-center mt-2">
+              {description}
+            </p>
           </div>
 
-          <p className="font-sans text-sm/[1.125rem] text-neutral-300 md:text-base/[1.375rem]">
-            {description}
-          </p>
-
           <div className="flex justify-between items-center mt-auto">
-            <span className="text-neutral-400 text-sm">{count} available</span>
-            <button
-              type="button"
-              className="text-sm text-neutral-400 hover:text-white hover:bg-neutral-800 px-4 py-1 rounded-full border border-neutral-800 transition-colors"
-            >
-              View
-            </button>
+            <div className="flex items-center gap-2">
+              <span className="text-neutral-500">•</span>
+              <span className="text-neutral-400 text-sm">
+                {count} available
+              </span>
+            </div>
+            <Button className="text-sm">View</Button>
           </div>
         </div>
       </div>
