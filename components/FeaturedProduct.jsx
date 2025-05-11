@@ -3,15 +3,15 @@ import { ThreeDCardDemo } from './threed-card';
 import { Button } from './ui/button';
 const FeaturedProduct = () => {
   return (
-    <div className="py-16">
+    <div className="py-4">
       <div className="flex flex-col items-center mb-8">
         <p className="text-3xl text-white font-medium">
           Best <span className="font-medium text-violet-300">AI Models</span>
         </p>
-        <div className="w-28 h-0.5 bg-white/30 mt-2"></div>
+        <div className="w-28 h-0.5 bg-white/30 mt-2" />
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-60">
         <ThreeDCardDemo
           modelType="GPT Model"
           title="FinTech Advisor"

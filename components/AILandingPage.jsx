@@ -8,11 +8,11 @@ const AILandingPage = () => {
       {/* Background with darkening effect */}
       <div className="absolute inset-0 z-0">
         <WavyBackground className="max-w-4xl mx-auto pb-40">
-          <p className="text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
+          <p className="text-3xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
             Future of AI
           </p>
           <FlipWords
-            className="text-violet-300 text-2xl md:text-4xl lg:text-7xl font-bold inter-var flex justify-center"
+            className="text-violet-300 text-3xl md:text-4xl lg:text-7xl font-bold inter-var flex justify-center"
             words={['Exchange', 'Commerce', 'Trading']}
             duration={2000}
           />
