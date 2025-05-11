@@ -1,9 +1,10 @@
 import React from 'react';
-
+import { MeteorsDemo } from './meteors-component';
 const Banner = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 py-20">
       <div className="flex flex-col items-start justify-center gap-6">
+        <MeteorsDemo />
         <div className="space-y-3">
           <p className="text-primary font-medium">BLOCKCHAIN + AI</p>
           <h2 className="text-3xl md:text-4xl font-medium">

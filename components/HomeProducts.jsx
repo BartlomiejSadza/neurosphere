@@ -39,8 +39,8 @@ const HomeProducts = () => {
   return (
     <div className="py-16">
       <div className="flex flex-col items-center mb-10">
-        <h2 className="text-3xl font-medium">
-          AI Model <span className="text-primary">Categories</span>
+        <h2 className="text-3xl font-medium text-neutral-200">
+          AI Model <span className="text-violet-300">Categories</span>
         </h2>
         <div className="w-28 h-0.5 bg-primary mt-2" />
       </div>
