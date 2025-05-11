@@ -15,7 +15,7 @@ const Navbar = () => {
         className="font-bold text-2xl tracking-wider cursor-pointer"
         onClick={() => router.push('/')}
       >
-        Ailegro
+        NeuroSphere
       </div>
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-blue-300 transition">
